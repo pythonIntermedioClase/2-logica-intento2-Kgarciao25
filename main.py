@@ -78,7 +78,7 @@ def menu_funciones_basicas():
     iva = calcular_iva(valor)
     print("El valor del IVA es", iva)
     
-    mostrar_resultado(f"IVA sobre ${valor:,.0},", iva)
+    mostrar_resultado(f"IVA sobre ${valor:,.0f},", iva)
     
     iva = calcular_iva (valor, 0.1)
 
@@ -99,10 +99,10 @@ def menu_encadenamiento():
     print("\n--- Encadenamiento de funciones ---")
 
     # TODO: descomenta cuando hayas completado limpiar_nit y validar_nit
-    # casos = ["900-123-456", "800.234.567", "ABC123", "123", "8001234560"]
-    # for nit in casos:
-    #     resultado = procesar_nit(nit)
-    #     print(f"  {resultado}")
+    casos = ["900-123-456", "800.234.567", "ABC123", "123", "8001234560"]
+    for nit in casos:
+        resultado = procesar_nit(nit)
+        print(f"  {resultado}")
 
     # TODO: descomenta cuando hayas completado pipeline_nit
     # print()
@@ -185,8 +185,8 @@ def menu_ciclos_for():
     print("\n--- Ciclos for ---")
 
     # TODO: descomenta cuando hayas completado imprimir_nits_validos
-    # nits_prueba = ["900123456", "ABC123", "800234567", "123", "400678901"]
-    # imprimir_nits_validos(nits_prueba)
+    nits_prueba = ["90012345", "ABC123", "800234567", "123", "400678901"]
+    imprimir_nits_validos(nits_prueba)
 
     # TODO: descomenta cuando hayas completado calcular_totales
     # valores = [1_500_000, 850_000, 0, 2_300_000, 950_000, 3_200_000, 450_000, 1_100_000]

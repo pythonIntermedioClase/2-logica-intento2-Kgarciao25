@@ -239,7 +239,12 @@ def limpiar_nit(nit):
     # 2. Elimina los puntos de sin_guiones con .replace(".", "") y guarda
     #    el resultado en una variable llamada sin_puntos.
     # 3. Retorna sin_puntos.
-    pass
+   # pass
+
+    sin_guiones = nit.replace("-", "") 
+    sin_puntos = sin_guiones.replace(".", "")
+    return sin_puntos
+
 
 
 def validar_nit(nit):
@@ -268,8 +273,11 @@ def validar_nit(nit):
     # 3. Verifica que la longitud sea válida:
     #    longitud_valida = len(nit_limpio) >= 9 and len(nit_limpio) <= 10
     # 4. Retorna solo_digitos and longitud_valida.
-    pass
-
+    
+    nit_limpio = limpiar_nit(nit)
+    solo_digitos = nit_limpio.isdigit()
+    longitud_valida = len(nit_limpio) >= 9 and len(nit_limpio) <= 10
+    return solo_digitos, longitud_valida
 
 def normalizar_texto(texto):
     """
@@ -319,7 +327,16 @@ def procesar_nit(nit):
     # 4. Si es_valido es False:
     #    mensaje = f"NIT {nit}: INVÁLIDO"
     # 5. Retorna mensaje.
-    pass
+    #pass
+
+    nit_limpio = limpiar_nit(nit)
+    es_valido = validar_nit(nit_limpio)
+    if es_valido:
+        mensaje = f"NIT {nit_limpio}: válido"
+    else:
+        mensaje = f"NIT {nit}: INVÁLIDO"
+    return mensaje
+    
 
 
 def pipeline_nit(nit):
@@ -663,7 +680,15 @@ def imprimir_nits_validos(nits):
     #    - Llama a validar_nit(nit)
     #    - Si es válido: imprime "  {contador}. {nit}"
     #      e incrementa: contador = contador + 1
-    pass
+    
+    print ("NITS Válidos:")
+    contador = 0
+    total = len(nits)
+    for nit in nits:
+        if validar_nit(nit):
+            contador = contador + 1
+            print(f" NIT válido {contador}: {nit}")
+    print(f" Total válidos: {contador} de {total}")
 
 
 def calcular_totales(valores):
@@ -693,7 +718,15 @@ def calcular_totales(valores):
     #    - Actualiza el máximo: si valor > maximo, haz maximo = valor
     # 4. Calcula el promedio: promedio = total / len(valores)
     # 5. Retorna total, promedio, maximo (los tres en esa línea)
-    pass
+    
+    total = 0
+    máximo= valores [0]
+    for valor in valores:
+        total = total + valor 
+        if valor > máximo:
+            máximo = valor
+    promedio = total / len(valores)
+    return total, promedio, máximo
 
 
 def generar_periodos_multiple(anio_inicio, anio_fin, meses_por_anio=12):
@@ -724,7 +757,14 @@ def generar_periodos_multiple(anio_inicio, anio_fin, meses_por_anio=12):
     #      (el :02d formatea el mes con cero a la izquierda: 1 -> "01")
     #    - Agrega a la lista: periodos.append(codigo)
     # 4. Retorna periodos
-    pass
+    
+    periodos = [2024, 2025, 3]
+    for anio in range(anio_inicio, anio_fin + 1):
+        for mes in range(1,meses_por_anio + 1):
+            codigo = f"{anio}{mes:02d}"
+            periodos.append(codigo)
+    return periodos
+
 
 
 # ---------------------------------------------------------------------------
